@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+    Stock List <br>
+    {% for company in companies %}
+        {{ company.body }}
+                <button class="btn btn-primary display_stock" data-id="{{ company.id }}" >
+                Display
+                </button>
+                <button class="btn btn-primary delete_stock" data-id="{{ company.id }}" >
+                Delete
+                </button>
+        <br>
+    {% endfor %}
+    <script>
+    $(document).ready(function() {
+        $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+        // Delete stock
+        $('.display_stock').click(function(event) {
+        var stock_id = $(this).data('id');
+        var url = $SCRIPT_ROOT + '/stock/' + stock_id;
+        $.ajax({
+            url: url,
+            type: 'GET',
+        }).done(function(data) {
+            location.reload();
+        });
+        });
+    });
+    </script>
+    <script>
+    $(document).ready(function() {
+        $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+        // Delete stock
+        $('.delete_stock').click(function(event) {
+        var stock_id = $(this).data('id');
+        var url = $SCRIPT_ROOT + '/stocklist/' + stock_id + '/delete';
+        $.ajax({
+            url: url,
+            type: 'DELETE',
+        }).done(function(data) {
+            location.reload();
+        });
+        });
+    });
+    </script>
+{% endblock %}
