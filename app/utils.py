@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import mpld3
 from pandas.plotting import register_matplotlib_converters
 from datetime import date, timedelta
+import tornado
 
 
 def open_stock_plot(stock_id):

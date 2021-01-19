@@ -1,0 +1,15 @@
+flask
+flask_wtf
+yfinance
+matplotlib
+mpld3
+pandas
+flask_login
+werkzeug
+wtforms
+alembic
+sqlalchemy
+flask_sqlalchemy
+flask_migrate
+tornado
+email_validator
